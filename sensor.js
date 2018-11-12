@@ -25,7 +25,13 @@ module.exports = function(RED) {
                         topic = input_msg.topic;
                 }
 
-                var msg = { payload: value, topic: topic };
+                var msg = { 
+                    payload: {
+                        id: node.sensorid,
+                        temperature: value
+                    }, 
+                    topic: topic 
+                };
                 node.send(msg);
             });
         }
